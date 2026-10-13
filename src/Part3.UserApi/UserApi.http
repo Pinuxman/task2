@@ -1,0 +1,21 @@
+@host = http://localhost:5270
+# SHA-256 от строки "password123"
+@hash = ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f
+
+### Создать пользователя
+POST {{host}}/user
+Content-Type: application/json
+
+{ "Login": "example_user", "PassHash": "{{hash}}" }
+
+### Получить пользователя
+GET {{host}}/user/1
+
+### Обновить пользователя
+PUT {{host}}/user/1
+Content-Type: application/json
+
+{ "Login": "renamed_user", "PassHash": "{{hash}}" }
+
+### Удалить пользователя
+DELETE {{host}}/user/1
